@@ -3,8 +3,8 @@ function LL() {
 }
 
 LL.prototype.add = function(info) {
-	var node = {
-  	data: info,
+ var node = {
+    data: info,
     next: null
   }
   var pointer = null;
