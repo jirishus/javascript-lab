@@ -1,5 +1,5 @@
 function LL() {
-	this.head = null;
+ this.head = null;
 }
 
 LL.prototype.add = function(info) {
@@ -10,12 +10,12 @@ LL.prototype.add = function(info) {
   var pointer = null;
   
   if (!this.head) {
-  	this.head = node;
+   this.head = node;
   } else {
-  	pointer = this.head;
+   pointer = this.head;
     
     while (pointer.next) {
-    	pointer = pointer.next;
+     pointer = pointer.next;
     }    
     pointer.next = node;
   }  
