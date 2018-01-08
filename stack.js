@@ -23,10 +23,21 @@ Stack.prototype.push = function(value) {
  this.size++;
 }
 
+Stack.prototype.pop = function() {
+ var removed = -1;
+ if (this.head) {
+  removed = this.head.data;
+  this.head = this.head.next;
+  this.size--;
+ }
+ return removed;
+}
+
 // mock browser history using Stack
 var browser = new Stack();
 // push data our browser stack
 browser.push('www.google.com');
 browser.push('www.learnsteady.com');
+browser.pop();
 
 console.log(browser);
