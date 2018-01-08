@@ -33,11 +33,14 @@ Stack.prototype.pop = function() {
  return removed;
 }
 
+Stack.prototype.peek = function() {
+ return this.head ? this.head : -1;
+}
+
 // mock browser history using Stack
 var browser = new Stack();
 // push data our browser stack
 browser.push('www.google.com');
 browser.push('www.learnsteady.com');
-browser.pop();
 
-console.log(browser);
+console.log(browser.peek());
