@@ -2,7 +2,7 @@ var input = 'AnacoNdA';
 
 function deDup(str) {
  var output = '';
-  var normalized = str.toUpperCase();
+  var normalized_str = str.toUpperCase();
   
   for (var i=0;i<str.length;i++) {
     var temp = normalized[i];
@@ -10,8 +10,7 @@ function deDup(str) {
      output += str[i];
     }
   }
-  
-  console.log(output);
+  return output;
 }
 
-deDup(input);
+var clean_string = deDup(input);
