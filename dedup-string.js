@@ -1,15 +1,19 @@
-let demo = 'AbraCadABraAlakAzam';
+var demo = 'AbraCadABraAlakAzam';
 
-function removeDuplicates(str) {
+function dedup(str) {
 	let clean = '';
-  let norm = str.toLowerCase();
-	for (let i=0;i<str.length;i++) {
-  	let letter = norm[i];
-		if (clean.indexOf(letter) === -1) {
+  let copy = str;
+  for (let i=0;i<str.length;i++) {
+		
+		let check = clean.indexOf(copy[i].toLowerCase()) === -1 && clean.indexOf(copy[i].toUpperCase()) == -1;
+    if (check) {
     	clean += str[i];
     }
   }
+  
   return clean;
 }
 
-console.log(removeDuplicates(demo));
+var result = dedup(demo);
+
+console.log(result);
