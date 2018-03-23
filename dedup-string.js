@@ -1,17 +1,15 @@
-var input = 'AnacoNdA';
+let demo = 'AbraCadABraAlakAzam';
 
-function deDup(str) {
- var output = '';
-  var normalized = str.toUpperCase();
-  
-  for (var i=0;i<str.length;i++) {
-    var temp = normalized[i];
-   if (output.indexOf(temp) === -1) {
-     output += str[i];
+function removeDuplicates(str) {
+	let clean = '';
+  let norm = str.toLowerCase();
+	for (let i=0;i<str.length;i++) {
+  	let letter = norm[i];
+		if (clean.indexOf(letter) === -1) {
+    	clean += str[i];
     }
   }
-  
-  console.log(output);
+  return clean;
 }
 
-deDup(input);
+console.log(removeDuplicates(demo));
