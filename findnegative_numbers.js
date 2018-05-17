@@ -8,7 +8,7 @@ var dataSet = [
   [4, 5, 7, 8]
 ];
 
-// Brute Force Solution O(n^2)
+// Brute Force Solution O(rc) - (row * colum)
 function countNegativeInts() {
 	var negativeNumCount = 0;
   for (var i=0;i<dataSet.length;i++) {
