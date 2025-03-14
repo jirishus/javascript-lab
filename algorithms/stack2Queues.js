@@ -23,10 +23,20 @@ Stack.prototype.pop = function() {
   return this.queue1.shift();
 }
 
+Stack.prototype.top = function() {
+  return this.queue1[0]; // peek at the front of queue1
+}
+
+Stack.prototype.empty = function() {
+  return this.queue1.length === 0;
+}
+
 // usage
 const stack = new Stack();
 stack.push(1);
 stack.push(2);
 stack.push(3);
+console.log(stack.top());
 console.log(stack.pop());
-console.log(stack.pop());
+console.log(stack.top());
+console.log(stack.empty());
