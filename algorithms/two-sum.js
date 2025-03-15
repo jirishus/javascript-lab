@@ -1,15 +1,15 @@
-let demo = [2 , 7, 11, 15, 7, 7];
+let nums = [2 , 7, 11, 15, 7, 7];
 
-function twoSum(arr, target) {
- let hm = {};
- for (let i=0;i < arr.length; i+=1) {
-  let temp = arr[i];
-  if (!hm[temp]) {
-   hm[temp] = 0;
+function twoSum(nums, target) {
+ let map = new Map();
+ for (let i=0;i<nums.length;i++) {
+  let comp = target - nums[i];
+  if (map.has(comp)) {
+    return [map.get(comp), i];
   }
-  hm[temp] += 1;
+  map.set(nums[i], i);
  }
- return hm;
+ return [];
 }
 
-console.log(twoSum(demo, 9));
+console.log(twoSum(nums, 14));
