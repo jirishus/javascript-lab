@@ -36,6 +36,21 @@ LinkedList.prototype.add = function(node) {
  }
 }
 
+LinkedList.prototype.reverse = function(head) {
+  if (head === null) { return head; }
+  // init pointers
+  let prev = null;
+  let current = head;
+  while (current !== null) {
+    let next = current.next; // save next
+    // advance prev / next
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+}
+
 // Create inkedList Object
 let list = new LinkedList();
 
@@ -50,3 +65,7 @@ list.add(f2);
 list.add(f3);
 
 console.log(list);
+
+const r = list.reverse(list.head);
+
+console.log(r);
