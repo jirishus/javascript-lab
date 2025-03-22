@@ -23,14 +23,30 @@ function Node(data) {
  */
 LinkedList.prototype.add = function(node) {
  // first check if linkedList head is null, if so add first node.
- return 'Not Implemented';
+ let pointer = null;
+ 
+ if (!this.head) {
+  this.head = node;
+ } else {
+  pointer = this.head;
+  while (pointer.next) {
+    pointer = pointer.next
+  }
+  pointer.next = node;
+ }
 }
 
 // Create inkedList Object
 let list = new LinkedList();
 
 // Create Node Object
-let node10 = new Node('mockdata');
+let f1 = new Node('fallout1');
+let f2 = new Node('fallout2');
+let f3 = new Node('fallout3');
 
 // Add Node Object to LinkedList
-list.add(node10);
+list.add(f1);
+list.add(f2);
+list.add(f3);
+
+console.log(list);
