@@ -22,9 +22,8 @@ function Node(data) {
  * @param {Node} - The new Node to be inserted into the LinkedList
  */
 LinkedList.prototype.add = function(node) {
+ let pointer = null; // init pointer
  // first check if linkedList head is null, if so add first node.
- let pointer = null;
- 
  if (!this.head) {
   this.head = node;
  } else {
