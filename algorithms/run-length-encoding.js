@@ -9,7 +9,7 @@ function encode(str) {
   let output = '';
   let count = 1;
 
-  for (let i=1;i<str.length;i++) {
+  for (let i=0;i<str.length;i++) {
     if (i + 1 < str.length && str[i] === str[i + 1]) {
       count++;
     } else {
