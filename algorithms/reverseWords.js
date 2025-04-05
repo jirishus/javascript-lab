@@ -1,4 +1,8 @@
 // Reverse words in a string
+/*
+ Run-time: O(n)
+ Space: O(n) - to store result of split by spaces
+*/
 function reverseWords(s) {
   // remove leading and trailing spaces
   s.trim();
