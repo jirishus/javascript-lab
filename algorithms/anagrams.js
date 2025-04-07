@@ -1,4 +1,6 @@
-
+/*
+ Given two strings s and t, return true if t is an anagram of s, and false otherwise
+*/
 function anagrams(str1, str2) {
   if (str1.length !== str2.length) return false;
   let wordMap = {};
