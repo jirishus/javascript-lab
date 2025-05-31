@@ -37,3 +37,17 @@ LRUCache.prototype.get = function(key) {
   return value;
 }
 
+// method to put a key-value pair into the CACHE
+LRUCache.prototype.put = function(key,value) {
+  if (this.cache.has(key)) {
+    this.cache.delete(key);
+  }
+
+  this.cache.set(key, value);
+
+  // Enforce capacity
+  if (this.cache.size > this.capacity) {
+    this.cache.delete(this.cache.key().next().value);
+  }
+}
+
