@@ -47,7 +47,7 @@ LRUCache.prototype.put = function(key,value) {
 
   // Enforce capacity
   if (this.cache.size > this.capacity) {
-    this.cache.delete(this.cache.key().next().value);
+    this.cache.delete(this.cache.keys().next().value);
   }
 }
 
