@@ -1,5 +1,8 @@
 /*
 Given a string s, find the length of the longest substring without duplicate characters
+
+Time: O(n)
+Space: O(min(m,n))
 */
 function lengthOfLongestSubstring(s) {
   let set = new Set();
