@@ -1,3 +1,4 @@
+// Find save trades (trades that haven't been marked as risky on the same day or day before the trade)
 const trades = [
   { symbol: 'AAPL', date: '2025-06-13' },
   { symbol: 'TSLA', date: '2025-06-14' },
@@ -6,10 +7,15 @@ const trades = [
 ];
 
 const alerts = [
-  { symbol: 'TSLA', date: '2025-06-14' }, // ⚠️ alert on the same day as one suggestion and day before another
+  { symbol: 'TSLA', date: '2025-06-14' },
   { symbol: 'NVDA', date: '2025-06-14' }
 ];
 
+/**
+ * 
+ * @param {Array} trades 
+ * @param {Array} alerts 
+ */
 function findSafeTrades(trades, alerts) {
   const safeTrades = trades.filter((trade) => {
     const isRisky = alerts.some((alert) => {
