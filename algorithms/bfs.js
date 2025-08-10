@@ -9,6 +9,8 @@ function bfs(graph, start) {
     if (visited.has(node)) continue;
     visited.add(node);
 
+    console.log(`Processing node: ${node}`);
+
     // process neighbors
     for (const neighbor of graph[node]) {
       if (!visited.has(neighbor)) {
@@ -17,3 +19,15 @@ function bfs(graph, start) {
     }
   }
 }
+
+// Example graph (adjacency list)
+const graph = {
+  A: ['B', 'C'],
+  B: ['D', 'E'],
+  C: ['F'],
+  D: [],
+  E: ['F'],
+  F: []
+};
+
+bfs(graph, 'A');
