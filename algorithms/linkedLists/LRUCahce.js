@@ -16,4 +16,8 @@ class LRUCache {
     this.head.next = this.tail;
     this.tail.prev = this.head;
   }
+  get(key) {}
+  put(key, value) {}
+  add(node) {}
+  remove(node) {}
 }
