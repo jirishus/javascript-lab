@@ -16,8 +16,29 @@ class LRUCache {
     this.head.next = this.tail;
     this.tail.prev = this.head;
   }
-  get(key) {}
-  put(key, value) {}
+  get(key) {
+    if (!this.dic.has(key)) {
+      return -1;
+    }
+    let node = this.dic.get(key);
+    this.remove(node);
+    this.add(node);
+    return node.value;
+  }
+  put(key, value) {
+    if (this.dic.has(key)) {
+      this.remove(this.dic.get(key))
+    }
+    let node = new Node(key, value);
+    this.add(node);
+    this.dic.set(key, node);
+    if (this.dic.size > this.capacity) {
+      // evict records
+      let nodeToDelete = this.head.next;
+      this.remove(nodeToDelete);
+      this.dic.delete(nodeToDelete.key);
+    }
+  }
   add(node) {}
   remove(node) {}
 }
