@@ -39,6 +39,17 @@ class LRUCache {
       this.dic.delete(nodeToDelete.key);
     }
   }
-  add(node) {}
-  remove(node) {}
+  add(node) {
+    let pre = this.tail.prev
+    pre.next = node;
+    node.prev = pre;
+    node.next = this.tail;
+    this.tail.prev = node;
+  }
+  remove(node) {
+    let pre = node.prev;
+    let nxt = node.next;
+    pre.next = nxt;
+    nxt.prev = pre;
+  }
 }
