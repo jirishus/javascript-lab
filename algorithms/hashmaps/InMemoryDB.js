@@ -15,6 +15,20 @@ class MemoryDB {
   delete(key) {
     return this.store.delete(key);
   }
+
+  // has method to check if
+  // a key exists without retrieving it
+  has(key) {
+    return this.store.has(key);
+  }
+
+  clear() {
+    this.store.clear();
+  }
+
+  size() {
+    this.store.size;
+  }
 }
 
 // Driver Code
