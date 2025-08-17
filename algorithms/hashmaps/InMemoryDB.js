@@ -9,7 +9,8 @@ class MemoryDB {
   }
 
   get(key) {
-    return this.store.get(key) ? this.store.get(key) : null;
+    const value = this.store.get(key);
+    return value !== undefined ? value : null;
   }
 
   delete(key) {
