@@ -1,6 +1,8 @@
 class MemoryDB {
   constructor() {
+    // Map of actual key-value pairs
     this.store = new Map();
+    // Map of Key -> expireAt timestamps
     this.expirations = new Map();
   }
 
@@ -42,6 +44,7 @@ class MemoryDB {
   }
 
   delete(key) {
+    this.expirations.delete(key);
     return this.store.delete(key);
   }
 
