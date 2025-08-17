@@ -30,7 +30,15 @@ class MemoryDB {
   }
 
   get(key) {
-    return this.store.get(key) ? this.store.get(key) : null;
+    const expireAt = this.expirations.get(key);
+    const value = this.store.get(key);
+    if (expireAt && Date.now() > expireAt) {
+      // Here, we use LAZY EXPIRATION, meaning expired key are ONLY cleaned up when accessed
+      this.store.delete(key);
+      this.expirations.delete(key);
+    }
+
+    return value !== undefined ? value : null;
   }
 
   delete(key) {
