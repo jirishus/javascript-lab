@@ -1,5 +1,42 @@
 class MemoryDB {
   constructor() {
+    /**
+     * 
+     * We use two separate maps to maintain
+     * 
+     * 1. Separation of Concerns
+     * 
+     * Each map is single-purpose:
+     *  - One only handles values
+     *  - The other only tracks TTL metadata
+     * 
+     * This design keeps the logic more simple and easier to test and evolve
+     * 
+     * 2. Faster Lookups
+     * 
+     *  When we call get(key), each lookup is O(1) with a Map
+     *  By keeping them separate, we don't need to parse or unwrap a complex object to find the TTL
+     * 
+     * 3. Simpler Mutation Logic
+     * 
+     * If we stored both value and TTL in one Map
+     * (this.store.set("key", { value: 'abc}, expireAt: 12345 ))
+     * Then every time you do a get,set, or delete, you'd have to destructure or update both properties carefully
+     * 
+     * 4. Optional TTL
+     *  Not every key will have a TTL
+     * 
+     *  With one map, we'd have to store { value, expireAt: null }, which is wasted space and complexity
+     * 
+     * 5. Easier to Extend or Refactor Later
+     * 
+     *  Makes it easier to:
+     *    - Add background TTL cleanup
+     *    - Implement eviction policies (like LRU)
+     *    - Serialzie / deserialize TTL and value layers independently
+     *    - Move on to Redis or a file and the other to memory, if needed
+     */
+
     // Map of actual key-value pairs
     this.store = new Map();
     // Map of Key -> expireAt timestamps
