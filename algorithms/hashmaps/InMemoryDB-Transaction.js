@@ -37,3 +37,18 @@ class DB {
   }
 
 }
+
+const db = new DB();
+
+db.set('a', 1);
+
+console.log(db);
+
+// TRANSACTION
+db.begin()
+db.set('b', 2);
+// db.rollback(); // b is gone
+db.commit();
+
+console.log(db);
+
