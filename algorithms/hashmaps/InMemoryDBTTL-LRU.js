@@ -38,16 +38,13 @@ class MemoryDB {
     // Mark as recently used by reinserting it
     const value = this.store.get(key);
     this.store.delete(key);
-    this.store.set(key, value);
+    this.store.set
 
     return value;
   }
 
-    delete(key) {
-      this.expirations.delete(key);
-      return this.store.delete(key);
-    }
-
-    return true;
+  delete(key) {
+    this.expirations.delete(key);
+    return this.store.delete(key);
   }
 }
