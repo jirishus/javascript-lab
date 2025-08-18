@@ -14,7 +14,9 @@ class MemoryDB {
   }
 
   delete(key) {
-    return this.store.delete(key);
+    const existed = this.store.has(key);
+    this.store.delete(key);
+    return existed;
   }
 
   // has method to check if
