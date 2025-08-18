@@ -59,7 +59,6 @@ class MemoryDB {
       // later when we get(key), we can check if the current time is past the expireAt time
       this.expirations.set(key, expireAt);
     } else {
-
       // if no TTL was provided, this removes any existing expiration entry for that key.
       // This ensures the key will live forever unless manually deleted.
       this.expirations.delete(key);
@@ -73,16 +72,20 @@ class MemoryDB {
     const value = this.store.get(key);
     if (expireAt && Date.now() > expireAt) {
       // Here, we use LAZY EXPIRATION, meaning expired key are ONLY cleaned up when accessed
-      this.store.delete(key);
-      this.expirations.delete(key);
+      // this.store.delete(key);
+      // this.expirations.delete(key);
+      this.delete(key);
+      return null;
     }
 
     return value !== undefined ? value : null;
   }
 
   delete(key) {
+    const existed = !this.store.get(key);
     this.expirations.delete(key);
-    return this.store.delete(key);
+    this.store.delete(key);
+    return existed;
   }
 
   // has method to check if
